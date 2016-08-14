@@ -1,0 +1,9 @@
+Package: pixelserv
+Version: {{version}}
+Section: extras
+Priority: standard
+Architecture: all
+Depends: perl
+Maintainer: Andoni del Olmo <andoni.delolmo@gmail.com>
+Installed-Size: {{size}}
+Description: Lightweight web server that serves a 1x1 transparent GIF.

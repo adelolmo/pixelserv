@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -e
+
+systemctl daemon-reload
+systemctl enable pixelserv
+
+echo "Configuration \`/etc/pixelserv/config.conf'"
+echo "Start service with \`service pixelserv start'"

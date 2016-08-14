@@ -1,0 +1,21 @@
+#!/bin/sh
+
+set -e
+
+BUILD=build
+version=$(cat VERSION)
+size=$(du -csh package/ | sed '1!d' | grep -oe "^[0-9]*")
+
+rm -Rf $BUILD
+mkdir -p $BUILD/release $BUILD/tmp
+
+echo "Building version $version..."
+
+# Architectures: i386, amd64, armle
+
+cp -R package/* $BUILD/tmp
+sed 's/{{version}}/'${version}'/g;s/{{size}}/'${size}'/g' package/DEBIAN/control > $BUILD/tmp/DEBIAN/control
+
+fakeroot dpkg-deb -b -z9 $BUILD/tmp $BUILD/release
+
+echo done

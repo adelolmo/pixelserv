@@ -1,0 +1,13 @@
+[Unit]
+Description=Lightweight web server that serves a 1x1 transparent GIF
+After=syslog.target network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/usr/bin/pixelserv
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
